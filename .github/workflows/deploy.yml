@@ -15,10 +15,10 @@ jobs:
     - name: Install deps
       run: ./ci_install.sh
 
-    #- name: "Build → armeabi-v7a"
-    #  run: |
-    #    . env.sh
-    #    ./build.sh --all armeabi-v7a
+    - name: "Build → armeabi-v7a"
+      run: |
+        . env.sh
+        ./build.sh --all armeabi-v7a
 
     - name: "Build → arm64-v8a"
       run: |
