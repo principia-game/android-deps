@@ -1,15 +1,12 @@
 #!/bin/bash -e
-ver=2.1.3
+#ver=9e
 
 download () {
-	get_tar_archive libjpeg "https://download.sourceforge.net/libjpeg-turbo/libjpeg-turbo-${ver}.tar.gz"
+	get_tar_archive libjpeg "https://jpegclub.org/reference/wp-content/uploads/2022/01/jpegsrc.v9e.tar.gz"
 }
 
 build () {
-	cmake $srcdir/libjpeg/ "${CMAKE_FLAGS[@]}" 
+	$srcdir/libjpeg/configure --host=$CROSS_PREFIX --disable-shared
 	make
 	make_install_copy
-	# aren't both libraries TURBOO? idk
-	rm $pkgdir/libturbojpeg.a
-	
 }
