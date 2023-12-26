@@ -1,6 +1,6 @@
 #!/bin/bash -e
-mbedtls_ver=2.26.0
-curl_ver=7.79.1
+mbedtls_ver=2.28.5
+curl_ver=8.4.0
 
 download () {
 	get_tar_archive mbedtls "https://github.com/ARMmbed/mbedtls/archive/mbedtls-${mbedtls_ver}.tar.gz"
@@ -17,11 +17,11 @@ build () {
 	make DESTDIR=$mbedtls install
 	popd
 
+	# if you need to debug curl on android, remove the disabling of debug and verbose.
 	$srcdir/curl/configure --host=$CROSS_PREFIX \
 		--with-mbedtls="$mbedtls" \
 		--disable-shared --enable-static --disable-{debug,verbose} \
-		--disable-{proxy,crypto-auth,manual,ares,ftp,unix-sockets} \
-		--disable-{ldap,rtsp,dict,telnet,tftp,pop3,imap,smtp,gopher,mqtt}
+		--disable-{crypto-auth,manual,ares,ftp,unix-sockets,alt-svc,hsts,proxy,ntlm-wb,ftp,hsts,doh,smb,ldap,ldaps,rstp,dict,telnet,tftp,pop3,imap,smtp,gopher,mqtt}
 	make
 	make_install_copy
 
