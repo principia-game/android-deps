@@ -10,4 +10,4 @@ wget --progress=bar:force "http://dl.google.com/android/repository/android-ndk-$
 unzip -q "android-ndk-${ndk_version}-linux.zip"
 rm "android-ndk-${ndk_version}-linux.zip"
 
-printf 'export ANDROID_NDK="%s"\n' "$PWD/android-ndk-${ndk_version}" >env.sh
+printf 'export ANDROID_NDK="%s"\nexport JOBS=4' "$PWD/android-ndk-${ndk_version}" >env.sh
