@@ -1,12 +1,17 @@
 #!/bin/bash -e
-#ver=9e
+jpeg_ver=3.0.2
 
 download () {
-	get_tar_archive libjpeg "https://jpegclub.org/reference/wp-content/uploads/2022/01/jpegsrc.v9e.tar.gz"
+	get_tar_archive libjpeg "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${jpeg_ver}/libjpeg-turbo-${jpeg_ver}.tar.gz"
 }
 
 build () {
-	$srcdir/libjpeg/configure --host=$CROSS_PREFIX --disable-shared
+	cmake "${CMAKE_FLAGS[@]}" \
+		-DCMAKE_INSTALL_PREFIX=/usr/local \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DENABLE_SHARED=OFF \
+		-DWITH_TURBOJPEG=OFF \
+		$srcdir/libjpeg
 	make
 	make_install_copy
 }
