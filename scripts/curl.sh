@@ -1,6 +1,6 @@
 #!/bin/bash -e
 mbedtls_ver=2.28.5
-curl_ver=8.4.0
+curl_ver=8.7.1
 
 download () {
 	get_tar_archive mbedtls "https://github.com/ARMmbed/mbedtls/archive/mbedtls-${mbedtls_ver}.tar.gz"
@@ -19,9 +19,11 @@ build () {
 
 	# if you need to debug curl on android, remove the disabling of debug and verbose.
 	$srcdir/curl/configure --host=$CROSS_PREFIX \
-		--with-mbedtls="$mbedtls" \
+		--with-mbedtls="$mbedtls" --without-libpsl \
 		--disable-shared --enable-static --disable-{debug,verbose} \
-		--disable-{crypto-auth,manual,ares,ftp,unix-sockets,alt-svc,hsts,proxy,ntlm-wb,ftp,hsts,doh,smb,ldap,ldaps,rstp,dict,telnet,tftp,pop3,imap,smtp,gopher,mqtt}
+		--disable-docs \
+		--disable-{alt-svc,ares,basic-auth,bearer-auth,digest-auth,kerberos-auth,negotiate-auth,aws,dateparse,dnsshuffle,doh,hsts,http-auth,manual,netrc,ntlm-wb,progress-meter,proxy,tls-srp,unix-sockets} \
+		--disable-{ftp,ldap,ldaps,rtsp,dict,telnet,tftp,pop3,imap,smb,smtp,gopher,mqtt}
 	make
 	make_install_copy
 
