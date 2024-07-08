@@ -9,7 +9,7 @@ build () {
 	$srcdir/libpng/configure --host=$CROSS_PREFIX --disable-shared
 	make
 	make_install_copy
-	
+
 	rm "$pkgdir/libpng.a"
 	mv "$pkgdir/libpng16.a" "$pkgdir/libpng.a"
 }
