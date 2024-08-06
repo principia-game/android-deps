@@ -1,5 +1,5 @@
 #!/bin/bash -e
-sdl2_ver=2.30.5
+sdl2_ver=2.30.6
 
 download () {
 	get_tar_archive sdl2 "https://github.com/libsdl-org/SDL/releases/download/release-${sdl2_ver}/SDL2-${sdl2_ver}.tar.gz"
@@ -11,7 +11,8 @@ build () {
 		-DSDL_SHARED=OFF \
 		-DSDL_TEST=OFF \
 		-DSDL_RENDER=OFF \
-		-DSDL_VULKAN=OFF
+		-DSDL_VULKAN=OFF \
+		-DCMAKE_C_FLAGS="-DSDL_LEAN_AND_MEAN=1"
 
 	make
 	make_install_copy
