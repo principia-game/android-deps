@@ -1,8 +1,8 @@
 #!/bin/bash -e
-ver=2.13.2
+ver=2.13.3
 
 download () {
-	get_tar_archive freetype "https://sourceforge.net/projects/freetype/files/freetype2/${ver}/freetype-${ver}.tar.xz"
+	get_tar_archive freetype "https://download.savannah.gnu.org/releases/freetype/freetype-${ver}.tar.xz"
 }
 
 build () {

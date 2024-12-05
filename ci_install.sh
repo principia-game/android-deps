@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ndk_version=r26c
+ndk_version=r27b
 
 # Build tools and stuff
 sudo apt-get update
