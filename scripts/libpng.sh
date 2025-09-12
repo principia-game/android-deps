@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ver=1.6.47
+ver=1.6.50
 
 download () {
 	get_tar_archive libpng "https://download.sourceforge.net/libpng/libpng-${ver}.tar.gz"
