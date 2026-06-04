@@ -8,9 +8,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
 
     - name: Install deps
       run: ./ci_install.sh
@@ -36,7 +36,7 @@ jobs:
         ls -lh ../deps.zip
 
     - name: Upload and tag
-      uses: pyTooling/Actions/releaser@main
+      uses: pyTooling/Actions/releaser@v6.7.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: 'latest'

@@ -1,6 +1,6 @@
 #!/bin/bash -e
 mbedtls_ver=3.6.4
-curl_ver=8.16.0
+curl_ver=8.20.0
 
 download () {
 	get_tar_archive mbedtls "https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-${mbedtls_ver}/mbedtls-${mbedtls_ver}-easy-make-lib.tar.xz"
