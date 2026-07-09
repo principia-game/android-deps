@@ -3,7 +3,7 @@ mbedtls_ver=3.6.7
 curl_ver=8.21.0
 
 download () {
-	get_tar_archive mbedtls "https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-${mbedtls_ver}/mbedtls-${mbedtls_ver}-easy-make-lib.tar.xz"
+	get_tar_archive mbedtls "https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-${mbedtls_ver}/mbedtls-${mbedtls_ver}.tar.bz2"
 	get_tar_archive curl "https://curl.se/download/curl-${curl_ver}.tar.gz"
 }
 
